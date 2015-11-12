@@ -1,0 +1,99 @@
+declare program: prog2_myl
+{
+    declare function: func5( p1, p2, p3 )
+    {
+        XX :=  ( p1 + 15  ) ;
+        B :=  ( p3 + p2 ) ;
+        return  ( B + XX ) ;
+    }
+
+    declare function: func6( p1 )
+    {
+        if ( ( p1 <= 0  ) ) then
+        {
+            return p1;
+        }
+        else
+        {
+            if ( ( p1 > 100  ) ) then
+            {
+                return  ( p1 * p1 ) ;
+            }
+            else
+            {
+                return  ( p1 / 2  ) ;
+            }
+        }
+        return -1 ;
+    }
+
+    declare function: func7( p1 )
+    {
+        if ( ( p1 < 0  ) ) then
+        {
+            return 0 ;
+        }
+        VV := 0;
+        while ( ( VV <= p1 ) )
+        {
+            VV :=  ( VV + 1  ) ;
+        }
+        return VV;
+    }
+
+    declare function: bif( n )
+    {
+        if ( (  ( n == 0  )  OR  ( n == 1  )  ) ) then
+        {
+            return n;
+        }
+        else
+        {
+            return  ( call bif( ( n - 1  ) ) + call bif( ( n - 2  ) ) ) ;
+        }
+    }
+
+    {
+        PF := 10 ;
+        A :=  ( 10  + 15  ) ;
+        B :=  ( 10  + A ) ;
+        C :=  (  (  ( 1  + A )  +  ( 3  * B )  )  +  (  (  ( 70  + 80  )  + 5  )  +  ( 6  +  ( 9  +  (  ( 20  - 10  )  / 5  )  )  )  )  ) ;
+        D := call func5(A, B,  ( 99  + 101  ) );
+        E := call func5(C, D,  ( 1000  + 2000  ) );
+        F := call bif(10 );
+        if ( ( A <= B ) ) then
+        {
+            AA := A;
+            BB := B;
+            if ( ( A == 25  ) ) then
+            {
+                MMM := 99999 ;
+                NNN := 998888 ;
+            }
+            else
+            {
+                MMM := -99999 ;
+                MMM := -99999 ;
+            }
+        }
+        else
+        {
+            AA := B;
+            BB := A;
+        }
+
+
+        H := call func6(-2 );
+        I := call func6(80 );
+        J := call func6(120 );
+        K := call func7(12 );
+        L := call func7(120 );
+
+        bif3 := call bif(12);
+        func7_120 := call func7(120);
+
+        ss := call bif(10) + call bif(9);
+        tt := call func7(120)  + call bif( call bif (12)  - 122);
+        uu := call func7(120 );
+    }
+}

@@ -1,0 +1,18 @@
+declare program: prog4_myl
+{
+    declare function: func5( p1, p2, p3 )
+    {
+        return p1 + p2 + p3 + call func6(p1, p2, p3);
+    }
+
+    {
+
+        declare function: func6( p1, p2, p3 )
+        {
+            return  ( p1 * p2 * p3 ) ;
+        }
+
+        H := call func5(1,2,3 );
+        I := call func6(4,5,6 );
+    }
+}
