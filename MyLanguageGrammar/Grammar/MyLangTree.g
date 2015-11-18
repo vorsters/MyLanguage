@@ -8,14 +8,14 @@ options {
   k = 3;
 }
 
-@namespace { PlayingWithDLR.MyScriptRuntime.Script }
+@namespace { MyLang.Grammar }
 
 
 @header {
   //using System.Collections.Generic;
   
   using System;
-  using PlayingWithDLR.MyScriptRuntime;
+  using MyLang.Runtime;
 }
 
 runprogram returns [MyRunProgramNode result]

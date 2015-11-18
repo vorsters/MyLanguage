@@ -16,7 +16,7 @@ tokens {
     ENDP; 
 }
 
-@namespace { PlayingWithDLR.MyScriptRuntime.Script }
+@namespace { MyLang.Grammar}
 
 
 @header {   

@@ -28,7 +28,7 @@ namespace MyLang.Runtime
 
         public override object Evaluate(MyContext context)
         {
-            MyFunctionDeclerationRVD func = context.GetFunctionRVD(Name);
+            MyFunctionDecleration func = context.GetFunctionRVD(Name);
             
             MyContext ctx = new MyContext();
 

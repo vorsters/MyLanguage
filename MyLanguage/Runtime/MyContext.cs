@@ -6,7 +6,7 @@ namespace MyLang.Runtime
 {
     public class MyContext
     {
-        public Dictionary<string, MyFunctionDeclerationRVD> functionsRVD;
+        public Dictionary<string, MyFunctionDecleration> functionsRVD;
 
         
         public Dictionary<string, MyProgramDeclNode> programs;
@@ -26,7 +26,7 @@ namespace MyLang.Runtime
             variables = new Dictionary<string, IConvertible>();
             functions = new Dictionary<string, MyFunctionDecleration>();
 
-            functionsRVD = new Dictionary<string, MyFunctionDeclerationRVD>();
+            functionsRVD = new Dictionary<string, MyFunctionDecleration>();
 
             programs = new Dictionary<string, MyProgramDeclNode>();
             ListLog = new ListLog();
@@ -62,7 +62,7 @@ namespace MyLang.Runtime
             functions.Add(name, func);
         }
 
-        public void AddFunctionRVD(string name, MyFunctionDeclerationRVD func)
+        public void AddFunctionRVD(string name, MyFunctionDecleration func)
         {
             functionsRVD.Add(name, func);
         }
@@ -72,7 +72,7 @@ namespace MyLang.Runtime
             return functions[name];
         }
 
-        public MyFunctionDeclerationRVD GetFunctionRVD(string name)
+        public MyFunctionDecleration GetFunctionRVD(string name)
         {
             return functionsRVD[name];
         }

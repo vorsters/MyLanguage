@@ -5,14 +5,14 @@ namespace MyLang.Runtime
 {
     public class MyProgramDeclNode : MyNonTerminatingNode
     {
-        public MyProgramDeclNode(string name, List<MyFunctionDeclerationRVD> funcs, MyStatementListNode programStatements)
+        public MyProgramDeclNode(string name, List<MyFunctionDecleration> funcs, MyStatementListNode programStatements)
         {
             Name = name;
             Funcs = funcs; 
             Statements = programStatements;
         }
 
-        public List<MyFunctionDeclerationRVD> Funcs { get; set; }
+        public List<MyFunctionDecleration> Funcs { get; set; }
 
         public MyStatementListNode Statements { get; set; }
 

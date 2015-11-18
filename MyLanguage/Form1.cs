@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Antlr.Runtime;
 using Antlr.Runtime.Tree;
+using MyLang.Grammar;
 using MyLang.Runtime;
-using MyLang.Runtime.Script;
 
 //using 
 
@@ -275,7 +270,7 @@ namespace MyLang
                     );
 
 
-            List<MyFunctionDeclerationRVD> funcs = new List<MyFunctionDeclerationRVD>()
+            List<MyFunctionDecleration> funcs = new List<MyFunctionDecleration>()
                                                     {
                                                         func1Decl,
                                                         func2Decl,
@@ -314,7 +309,7 @@ namespace MyLang
             return prog1ProgramDecl;
         }
 
-        private static MyFunctionDeclerationRVD GetMyFuncDecl_func2()
+        private static MyFunctionDecleration GetMyFuncDecl_func2()
         {
 
             MyStatementListNode stmtlist2t = new MyStatementListNode()
@@ -382,7 +377,7 @@ namespace MyLang
                  .AddStatement(if1)
                  .AddStatement(defaultReturnStmt);
 
-            var func2 = new MyFunctionDeclerationRVD(
+            var func2 = new MyFunctionDecleration(
                 "func2",
                 new List<string>() { "p1" }
                 );
@@ -392,7 +387,7 @@ namespace MyLang
             return func2;
         }
 
-        private static MyFunctionDeclerationRVD GetMyFuncDecl_func3()
+        private static MyFunctionDecleration GetMyFuncDecl_func3()
         {
 
             MyIfStatement if1 = new MyIfStatement(
@@ -444,7 +439,7 @@ namespace MyLang
                  .AddStatement(while1)
                  .AddStatement(defaultReturnStmt);
 
-            var func3 = new MyFunctionDeclerationRVD(
+            var func3 = new MyFunctionDecleration(
                 "func3",
                 new List<string>() { "p1" }
                 );
@@ -455,7 +450,7 @@ namespace MyLang
         }
 
 
-        private static MyFunctionDeclerationRVD GetMyFuncDecl_func1()
+        private static MyFunctionDecleration GetMyFuncDecl_func1()
         {
 
             MyAssignmentNode assignmentNodeF1 =
@@ -485,8 +480,8 @@ namespace MyLang
                     );
 
 
-            MyFunctionDeclerationRVD func1Decl =
-                new MyFunctionDeclerationRVD(
+            MyFunctionDecleration func1Decl =
+                new MyFunctionDecleration(
                     "func1",
                     new List<string>() { "p1", "p2", "p3" }
                     );
@@ -514,7 +509,7 @@ namespace MyLang
             }
         }
 
-        private static MyFunctionDeclerationRVD GetMyFuncDecl_fibonaci()
+        private static MyFunctionDecleration GetMyFuncDecl_fibonaci()
         {
             /*
              * fib(n)
@@ -573,8 +568,8 @@ namespace MyLang
                         )
                 );
 
-            MyFunctionDeclerationRVD fib =
-                new MyFunctionDeclerationRVD(
+            MyFunctionDecleration fib =
+                new MyFunctionDecleration(
                     "fib",
                     new List<string>() { "n" }
                     );
@@ -643,7 +638,7 @@ namespace MyLang
             _context = new MyContext();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)  
         {
             // declare program
             _currentProgram = GetProg1ProgramDeclNode();
