@@ -16,7 +16,7 @@ tokens {
     ENDP; 
 }
 
-@namespace { MyLang.Grammar }
+@namespace { MyLanguageImpl.Grammar }
 
 
 @header {   

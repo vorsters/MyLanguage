@@ -8,14 +8,14 @@ options {
   k = 3;
 }
 
-@namespace { MyLang.Grammar }
+@namespace { MyLanguageImpl.Grammar }
 
 
 @header {
   //using System.Collections.Generic;
   
   using System;
-  using MyLang.Runtime;
+  using MyLanguageImpl.Runtime;
 }
 
 runprogram returns [MyRunProgramNode result]

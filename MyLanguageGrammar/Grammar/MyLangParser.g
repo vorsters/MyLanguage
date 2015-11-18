@@ -20,7 +20,7 @@ tokens {
 }
 
 
-@namespace { MyLang.Grammar } 
+@namespace { MyLanguageImpl.Grammar } 
 
 identifier 
 	:	IDENTIFIER^;
