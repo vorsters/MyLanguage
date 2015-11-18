@@ -4,3 +4,5 @@ obj/
 MyLanguage/bin/
 MyLanguage/packages/
 packages/
+MyLanguageImpl/bin/
+TestMyLanguageApp/bin/
