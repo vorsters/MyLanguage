@@ -1,0 +1,35 @@
+declare program: fibonacci
+{
+    declare function: fib(n)
+    {
+        if n == 0 then
+        {
+            return 0;
+        }
+        
+        if n == 1 then
+        {
+            return 1;
+        }
+        
+        return call fib(n-1) + call fib(n-2);
+    }
+
+    {
+        fib0 := call fib(0);
+        fib1 := call fib(1);
+        fib2 := call fib(2);
+        fib3 := call fib(3);
+        fib4 := call fib(4);
+        fib5 := call fib(5);
+        fib6 := call fib(6);
+        fib7 := call fib(7);
+        fib8 := call fib(8);
+        fib9 := call fib(9);
+        fib10 := call fib(10);
+        
+        
+        // this fails !  
+        // fib30 := call fib(30);
+    }
+}
