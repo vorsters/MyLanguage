@@ -71,6 +71,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyLanguageRuntime\MyLanguageRuntime.csproj">
+      <Project>{183f28ad-bbb3-4f10-97ea-13a1aaadfda2}</Project>
+      <Name>MyLanguageRuntime</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

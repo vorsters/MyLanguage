@@ -1,0 +1,8 @@
+declare program: prog6_myl
+{
+    {
+        PF := 10 ;
+    }
+}
+
+end

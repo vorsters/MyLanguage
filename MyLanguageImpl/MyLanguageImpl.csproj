@@ -52,53 +52,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\MyLanguageGrammar\obj\Debug\MyLangLexer.cs">
+    <Compile Include="..\MyLanguageGrammar\Grammar\output\MyLangLexer.cs">
       <Link>Grammar\MyLangLexer.cs</Link>
     </Compile>
-    <Compile Include="..\MyLanguageGrammar\obj\Debug\MyLangParser.cs">
+    <Compile Include="..\MyLanguageGrammar\Grammar\output\MyLangParser.cs">
       <Link>Grammar\MyLangParser.cs</Link>
     </Compile>
-    <Compile Include="..\MyLanguageGrammar\obj\Debug\MyLangTree.cs">
+    <Compile Include="..\MyLanguageGrammar\Grammar\output\MyLangTree.cs">
       <Link>Grammar\MyLangTree.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Runtime\ListLog.cs" />
-    <Compile Include="Runtime\MyAbstractNode.cs" />
-    <Compile Include="Runtime\MyAddNode.cs" />
-    <Compile Include="Runtime\MyAssignmentNode.cs" />
-    <Compile Include="Runtime\MyBinaryOpNode.cs" />
-    <Compile Include="Runtime\MyContext.cs" />
-    <Compile Include="Runtime\MyDivideNode.cs" />
-    <Compile Include="Runtime\MyFunctionCallNode.cs" />
-    <Compile Include="Runtime\MyFunctionDecleration.cs" />
-    <Compile Include="Runtime\MyFunctionRoepNode.cs" />
-    <Compile Include="Runtime\MyIfStatement.cs" />
-    <Compile Include="Runtime\MyIsEqualsNode.cs" />
-    <Compile Include="Runtime\MyIsGreaterThanNode.cs" />
-    <Compile Include="Runtime\MyIsGreaterThanOrEqualNode.cs" />
-    <Compile Include="Runtime\MyIsLessThanNode.cs" />
-    <Compile Include="Runtime\MyIsLessThanOrEqualNode.cs" />
-    <Compile Include="Runtime\MyLogicalAndNode.cs" />
-    <Compile Include="Runtime\MyLogicalOrNode.cs" />
-    <Compile Include="Runtime\MyMinusNode.cs" />
-    <Compile Include="Runtime\MyMultiplyNode.cs" />
-    <Compile Include="Runtime\MyNegateNode.cs" />
-    <Compile Include="Runtime\MyNonTerminatingNode.cs" />
-    <Compile Include="Runtime\MyProgramDeclNode.cs" />
-    <Compile Include="Runtime\MyReturnStatement.cs" />
-    <Compile Include="Runtime\MyRunProgramNode.cs" />
-    <Compile Include="Runtime\MyStatementListNode.cs" />
-    <Compile Include="Runtime\MyStatementNode.cs" />
-    <Compile Include="Runtime\MyTerminalNode.cs" />
-    <Compile Include="Runtime\MyValueNode.cs" />
-    <Compile Include="Runtime\MyVariableNode.cs" />
-    <Compile Include="Runtime\MyWhileStatement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Grammar\links to files in grammar project.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyLanguageRuntime\MyLanguageRuntime.csproj">
+      <Project>{183f28ad-bbb3-4f10-97ea-13a1aaadfda2}</Project>
+      <Name>MyLanguageRuntime</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

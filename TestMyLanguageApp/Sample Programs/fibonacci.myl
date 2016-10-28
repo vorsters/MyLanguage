@@ -2,16 +2,16 @@ declare program: fibonacci
 {
     declare function: fib(n)
     {
-        if n == 0 then
+        if (n == 0) then
         {
             return 0;
         }
-        
-        if n == 1 then
+
+        if (n == 1) then
         {
             return 1;
         }
-        
+
         return call fib(n-1) + call fib(n-2);
     }
 
@@ -27,9 +27,9 @@ declare program: fibonacci
         fib8 := call fib(8);
         fib9 := call fib(9);
         fib10 := call fib(10);
-        
-        
-        // this fails !  
+
+
+        // this fails !
         // fib30 := call fib(30);
     }
 }
