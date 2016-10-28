@@ -6,3 +6,11 @@ MyLanguage/packages/
 packages/
 MyLanguageImpl/bin/
 TestMyLanguageApp/bin/
+MyLanguageGrammar/bin/*
+MyLanguageGrammar_ANTLR4/bin/
+MyLanguageGrammar_ANTLR4/Grammar/*.class
+MyLanguageGrammar_ANTLR4/Grammar/*.java
+MyLanguageGrammar_ANTLR4/Grammar/*.tokens
+MyLanguageImpl_ANTLR4/bin/
+MyLanguageRuntime/bin/
+TestMyLanguage4App/bin/*
