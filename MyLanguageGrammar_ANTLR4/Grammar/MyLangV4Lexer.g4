@@ -1,6 +1,6 @@
 lexer grammar MyLangV4Lexer;
 
-ENDP 	: 'end';
+ENDP : 'end';
 
 ASSIGN  : ':=';
     
@@ -50,9 +50,15 @@ CALL : 'call';
 
 RETURN : 'return';
 
+PRINT : 'print';
+
+STRING : '"' .*? '"' ;
+
 LCURLY : '{';
 
 RCURLY : '}';
+
+EXCLAIM : '!';
 
 SEMI: ';';
 

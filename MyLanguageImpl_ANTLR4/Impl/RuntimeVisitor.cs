@@ -73,6 +73,11 @@ namespace MyLanguageImpl_ANTLR4.Impl
                 return VisitWhilestatement(stmt.whilestatement());
             }
 
+            if (stmt.printstatement() != null)
+            {
+                return VisitPrintstatement(stmt.printstatement());
+            }
+
             return s;
         }
 
@@ -122,6 +127,25 @@ namespace MyLanguageImpl_ANTLR4.Impl
             MyStatementListNode elsePart = ifStmt.elsepart != null ? VisitBlockstatement(ifStmt.elsepart) as MyStatementListNode : null;
 
             return new MyIfStatement(condition, thenPart, elsePart);
+        }
+
+        public override MyAbstractNode VisitPrintstatement([NotNull] MyLangV4Parser.PrintstatementContext context)
+        {
+            Console.WriteLine("VisitPrintstatement {0}", context.GetText());
+
+            MyAbstractNode expr = null;
+            if (context.expression() != null)
+                expr = Visit(context.expression());
+            else
+                expr = new MyStringLiteralNode(string.Empty); 
+
+            MyPrintStatementNode printStmt = new MyPrintStatementNode(expr) as MyPrintStatementNode;
+
+            if (context.EXCLAIM() != null)
+            {
+                printStmt.Exclaim = true;
+            }
+            return printStmt;
         }
 
         public override MyAbstractNode VisitWhilestatement([NotNull] MyLangV4Parser.WhilestatementContext whileStmt)
@@ -286,6 +310,14 @@ namespace MyLanguageImpl_ANTLR4.Impl
             return intNode;
         }
 
+        public override MyAbstractNode VisitString([NotNull] MyLangV4Parser.StringContext str)
+        {
+            Console.WriteLine("VisitString: {0}", str.GetText());
+            MyStringLiteralNode strExpr = new MyStringLiteralNode(str.GetText());
+            return strExpr;
+        }
+
+
         public override MyAbstractNode VisitFloat([NotNull] MyLangV4Parser.FloatContext number)
         {
             Console.WriteLine("VisitFloat: {0}", number.GetText());
@@ -360,6 +392,5 @@ namespace MyLanguageImpl_ANTLR4.Impl
             Console.WriteLine("VisitExpression: {0}", context.GetText());
             return base.VisitExpression(context);
         }
-
     }
 }

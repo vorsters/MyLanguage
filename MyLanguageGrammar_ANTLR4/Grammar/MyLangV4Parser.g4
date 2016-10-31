@@ -44,6 +44,11 @@ whilestatement
     WHILE LPAREN condition=expression RPAREN dopart=blockstatement
     ;
 
+printstatement
+    : PRINT
+    | PRINT expression
+    | PRINT EXCLAIM expression 
+    ;
 //statement
 //    : assignment #assignment1
 //    | returnstatement #returnstatement1
@@ -55,6 +60,7 @@ whilestatement
 statement
     : assignment SEMI
     | returnstatement SEMI
+    | printstatement SEMI
     | blockstatement
     | ifstatement
     | whilestatement
@@ -84,6 +90,7 @@ posateexpression
 
 expression
     : parenexpression #parenexpr
+    | STRING #string
     | left=expression MULTIPLY right=expression #multiply
     | left=expression DIVIDE right=expression #divide
     | left=expression PLUS right=expression #plus

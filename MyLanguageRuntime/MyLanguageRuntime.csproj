@@ -64,11 +64,13 @@
     <Compile Include="Runtime\MyMultiplyNode.cs" />
     <Compile Include="Runtime\MyNegateNode.cs" />
     <Compile Include="Runtime\MyNonTerminatingNode.cs" />
+    <Compile Include="Runtime\MyPrintStatementNode.cs" />
     <Compile Include="Runtime\MyProgramDeclNode.cs" />
     <Compile Include="Runtime\MyReturnStatement.cs" />
     <Compile Include="Runtime\MyRunProgramNode.cs" />
     <Compile Include="Runtime\MyStatementListNode.cs" />
     <Compile Include="Runtime\MyStatementNode.cs" />
+    <Compile Include="Runtime\MyStringLiteralNode.cs" />
     <Compile Include="Runtime\MyTerminalNode.cs" />
     <Compile Include="Runtime\MyValueNode.cs" />
     <Compile Include="Runtime\MyVariableNode.cs" />
