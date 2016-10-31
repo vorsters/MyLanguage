@@ -29,6 +29,7 @@ declare program: fibonacci
         fib10 := call fib(10);
 
 
+        fib20 := call fib(20);
         // this fails !
         // fib30 := call fib(30);
     }

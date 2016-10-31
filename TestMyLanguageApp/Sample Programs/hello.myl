@@ -1,0 +1,17 @@
+declare program: hello
+{
+    {
+        h := "HELLO";
+        w := "WORLD!";
+
+        print "hello";
+        print ! "world";
+
+        print;
+
+        print h + " " + w;
+        print ! h + " " + w;
+    }
+}
+
+

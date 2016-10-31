@@ -14,16 +14,62 @@ namespace TestMyLanguage4App
 {
     class Program
     {
+        bool list = false;
+        bool run = false;
+        bool debug = false;
+        bool dump = false;
+        string filename = string.Empty;
+
+
         private static void Main(string[] args)
         {
-            (new Program()).Run();
+            (new Program()).Run(args);
         }
-        public void Run()
+        public void Run(string [] args)
         {
+            if (!args.Any())
+            {
+                Console.WriteLine("usage: ");
+                Console.WriteLine(" --list | -l : print the program listing as interpreted (optional)");
+                Console.WriteLine(" --run  | -r : execute the program (optional)");
+                Console.WriteLine(" --debug| -d : print visitor debug information (optional)");
+                Console.WriteLine(" --dump | -u : dump the program variables after execution (optional)");
+                Console.WriteLine(" --filename=<fullpath> | -f=<fullpath> : the 'MyLanguage' file that contains the program");
+            }
+
+            foreach (var arg in args)
+            {
+                if (arg == "--list" || arg == "-l")
+                {
+                    list = true;
+                }
+
+                if (arg == "--run" || arg == "-r")
+                {
+                    run = true;
+                }
+
+                if (arg == "--debug" || arg == "-d")
+                {
+                    debug = true;
+                }
+
+                if (arg == "--dump" || arg == "-u")
+                {
+                    dump = true;
+                }
+
+                if (arg.StartsWith("--filename=") || arg.StartsWith("-f="))
+                {
+                    filename = arg.Split('=')[1];
+                    Console.WriteLine("running: {0}", filename);
+                }
+            }
+
             try
             {
                 Console.WriteLine("START");
-                RunParser();
+                RunParser(run, list, debug, dump, filename);
                 Console.Write("DONE. Hit RETURN to exit: ");
             }
             catch (Exception ex)
@@ -33,9 +79,8 @@ namespace TestMyLanguage4App
             }
             Console.ReadLine();
         }
-        private void RunParser()
+        private void RunParser(bool run, bool list, bool debug, bool dump, string filename)
         {
-            string filename = @"D:\development\cvsout\MyLanguage\TestMyLanguageApp\Sample Programs\prog7_myl.myl";
 
             FileStream fs = new FileStream(filename, FileMode.Open);
             AntlrInputStream inputStream = new AntlrInputStream(fs);
@@ -45,34 +90,40 @@ namespace TestMyLanguage4App
 
             var programContext = parser.program();
 
-            RuntimeVisitor visitor = new RuntimeVisitor();
-            //RuntimeVisitor2 visitor = new RuntimeVisitor2();
+            RuntimeVisitor visitor = new RuntimeVisitor(debug);
             MyProgramDeclNode program = visitor.Visit(programContext) as MyProgramDeclNode;
-
             MyContext runtimeContext = new MyContext();
-            program.List(runtimeContext);
 
-            Console.WriteLine("-----=====-----=====-----");
+            if (list)
+                program.List(runtimeContext);
 
+
+            // "compile" the program
             program.Evaluate(runtimeContext);
 
-            var runProgramNode = new MyRunProgramNode(program.Name);
-            runProgramNode.Evaluate(runtimeContext);
 
-
-            StringBuilder sb = new StringBuilder();
-
-            foreach (var varkey in runtimeContext.variables.Keys)
+            if (run)
             {
-                sb.AppendLine(varkey + " => " + runtimeContext.GetVariable(varkey));
+                // run the the program
+                var runProgramNode = new MyRunProgramNode(program.Name);
+                runProgramNode.Evaluate(runtimeContext);
+
+                // dump the program's memory - can we say heap?
+                if (dump)
+                {
+                    StringBuilder sb = new StringBuilder();
+
+                    foreach (var varkey in runtimeContext.variables.Keys)
+                    {
+                        sb.AppendLine(varkey + " => " + runtimeContext.GetVariable(varkey));
+                    }
+
+                    Console.WriteLine(sb);
+                    Console.WriteLine(runtimeContext.ListLog.ToString());
+                }
             }
-            Console.WriteLine(runtimeContext.ListLog.ToString());
 
-            Console.WriteLine(sb);
-
-            Console.WriteLine("-----");
             Console.ReadLine(); ;
-
         }
     }
 }
