@@ -44,7 +44,7 @@ namespace MyLanguageImpl.Runtime
 
         public override void List(MyContext context)
         {
-            context.ListLog.Append("-");
+            context.ListLog.Append(" - ");
             Op.List(context);
         }
     }

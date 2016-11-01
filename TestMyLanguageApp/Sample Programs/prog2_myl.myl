@@ -65,7 +65,7 @@ declare program: prog2_myl
         {
             AA := A;
             BB := B;
-            if ( ( A == 25  ) ) then
+            if ( ( A == 125  ) ) then
             {
                 MMM := 99999 ;
                 NNN := 998888 ;
@@ -73,9 +73,11 @@ declare program: prog2_myl
             else
             {
                 MMM := -99999 ;
-                MMM := --99999 ;
+                //MMM := --99999 ;  // does not compile anymore after --OPERATOR
                 MMM := -+99999 ;
                 MMM := -+-99999 ;
+                XXX := -   -   -  100;
+                XXX1 := -  - - - -   -  - MMM;
             }
         }
         else

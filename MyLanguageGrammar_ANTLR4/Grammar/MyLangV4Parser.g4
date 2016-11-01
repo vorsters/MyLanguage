@@ -4,10 +4,6 @@ options {
   tokenVocab = MyLangV4Lexer;
 }
 
-//identifier 
-//    :   IDENTIFIER
-//    ;
-    
 runprogram
     : RUN PROGRAM IDENTIFIER (ENDP | EOF)
     ;
@@ -50,28 +46,11 @@ printstatement
     | PRINT EXCLAIM expression 
     ;
 
-varinc
-    : IDENTIFIER PLUS_PLUS #varPlusPlus
-    | IDENTIFIER PLUS_EQUALS incval=expression #varPlusEquals
-    | IDENTIFIER MINUS_MINUS #varMinusMinus
-    | IDENTIFIER MINUS_EQUALS incval=expression #varMinusEquals
-    | PLUS_PLUS IDENTIFIER #plusPlusVar
-    | MINUS_MINUS IDENTIFIER #minusMinusVar
-    ;
-
-//statement
-//    : assignment #assignment1
-//    | returnstatement #returnstatement1
-//    | blockstatement #blockstatement1
-//    | ifstatement #ifstatement1
-//    | whilestatement #whilestatement1
-//    ;
-
 statement
     : assignment SEMI
     | returnstatement SEMI
     | printstatement SEMI
-    | varinc SEMI
+    | expression SEMI
     | blockstatement
     | ifstatement
     | whilestatement
@@ -101,7 +80,6 @@ posateexpression
 
 expression
     : parenexpression #parenexpr
-    | varinc #varincexpr
     | STRING #string
     | left=expression MULTIPLY right=expression #multiply
     | left=expression DIVIDE right=expression #divide
@@ -118,6 +96,20 @@ expression
     | FLOAT #float
     | negateexpression #negate
     | posateexpression #posate
+    | varinc #varincexpr
+    | incvar #incvarexpr
     | IDENTIFIER #varcall
     | funccall #funcallexpr
+    ;
+
+varinc
+    : IDENTIFIER PLUS_PLUS #varPlusPlus
+    | IDENTIFIER PLUS_EQUALS incval=expression #varPlusEquals
+    | IDENTIFIER MINUS_MINUS #varMinusMinus
+    | IDENTIFIER MINUS_EQUALS incval=expression #varMinusEquals
+    ;
+
+incvar
+    : PLUS_PLUS IDENTIFIER #plusPlusVar
+    | MINUS_MINUS IDENTIFIER #minusMinusVar
     ;

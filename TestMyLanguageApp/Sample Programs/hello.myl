@@ -1,10 +1,14 @@
 declare program: hello
 {
 
-    declare function: incr( p1 )
+    declare function: incr1( p1 )
     {
-        print "p1: " + p1;
         return p1++;
+    }
+
+    declare function: incr2( p1 )
+    {
+        return ++p1;
     }
 
     {
@@ -36,6 +40,16 @@ declare program: hello
 
         print "a: " + a;
         print "b: " + b;
+
+        print call incr1(100);
+        print call incr2(100);
+
+        a := 10;
+        b := +-+-+-++a;
+
+        print a;
+        print b;
+
     }
 }
 

@@ -62,7 +62,7 @@ namespace MyLanguageImpl.Runtime
             MyAssignmentNode ass_t_i = new MyAssignmentNode(t_i, varNode);
             
             MyAssignmentNode ass_myVar = new MyAssignmentNode(varNode, opNode);
-            MyAssignmentNode ass_t_i2 = new MyAssignmentNode(t_i, t_i);
+            MyExpressionStatementNode t_i_Stmt = new MyExpressionStatementNode(t_i);
 
             if (incrOp == IncrOp.PlusPlusVar || incrOp == IncrOp.MinusMinusVar)
             {
@@ -72,7 +72,7 @@ namespace MyLanguageImpl.Runtime
             {
                 AddStatement(ass_t_i);
                 AddStatement(ass_myVar);
-                AddStatement(ass_t_i2);
+                AddStatement(t_i_Stmt);
             }
         }
 
@@ -87,7 +87,6 @@ namespace MyLanguageImpl.Runtime
 
         public override void List(MyContext context)
         {
-
             switch (incrOp)
             {
                 case IncrOp.VarPlusPlus:

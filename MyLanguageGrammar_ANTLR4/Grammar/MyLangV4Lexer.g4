@@ -20,6 +20,8 @@ MULTIPLY: '*';
     
 DIVIDE  : '/'; 
 
+MOD  : '%'; 
+
 LPAREN  : '(';
     
 RPAREN  : ')';

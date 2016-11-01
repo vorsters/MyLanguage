@@ -55,7 +55,7 @@ namespace MyLanguageImpl.Runtime
 
                 if (statementNode is MyAssignmentNode || 
                     statementNode is MyReturnStatement || 
-                    statementNode is MyVarIncrementNode)
+                    statementNode is MyExpressionStatementNode)
                 {
                     context.ListLog.Append(";");
                 }

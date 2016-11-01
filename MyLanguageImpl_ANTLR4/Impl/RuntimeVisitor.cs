@@ -96,9 +96,10 @@ namespace MyLanguageImpl_ANTLR4.Impl
                 return VisitPrintstatement(stmt.printstatement());
             }
 
-            if (stmt.varinc() != null)
+            if (stmt.expression() != null)
             {
-                return Visit(stmt.varinc());
+                var expressionNode = Visit(stmt.expression());
+                return new MyExpressionStatementNode(expressionNode);
             }
 
             return s;
@@ -422,8 +423,11 @@ namespace MyLanguageImpl_ANTLR4.Impl
             return base.VisitVarinc(context);
         }
 
-        int _t_count = 0;
-
+        public override MyAbstractNode VisitIncvar([NotNull] MyLangV4Parser.IncvarContext context)
+        {
+            DebugLine("VisitIncvar: {0}", context.GetText());
+            return base.VisitIncvar(context);
+        }
 
 
         /*  perhaps we can get the parser to rewrite i++, i--, i+=val, i-=val as this:

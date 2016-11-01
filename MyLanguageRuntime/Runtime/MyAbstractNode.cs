@@ -1,3 +1,5 @@
+using System;
+
 namespace MyLanguageImpl.Runtime
 {
     public abstract class MyAbstractNode
