@@ -49,6 +49,16 @@ printstatement
     | PRINT expression
     | PRINT EXCLAIM expression 
     ;
+
+varinc
+    : IDENTIFIER PLUS_PLUS #varPlusPlus
+    | IDENTIFIER PLUS_EQUALS incval=expression #varPlusEquals
+    | IDENTIFIER MINUS_MINUS #varMinusMinus
+    | IDENTIFIER MINUS_EQUALS incval=expression #varMinusEquals
+    | PLUS_PLUS IDENTIFIER #plusPlusVar
+    | MINUS_MINUS IDENTIFIER #minusMinusVar
+    ;
+
 //statement
 //    : assignment #assignment1
 //    | returnstatement #returnstatement1
@@ -61,6 +71,7 @@ statement
     : assignment SEMI
     | returnstatement SEMI
     | printstatement SEMI
+    | varinc SEMI
     | blockstatement
     | ifstatement
     | whilestatement
@@ -90,6 +101,7 @@ posateexpression
 
 expression
     : parenexpression #parenexpr
+    | varinc #varincexpr
     | STRING #string
     | left=expression MULTIPLY right=expression #multiply
     | left=expression DIVIDE right=expression #divide

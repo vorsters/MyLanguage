@@ -5,9 +5,17 @@ ENDP : 'end';
 ASSIGN  : ':=';
     
 PLUS    : '+';
-    
+
+PLUS_PLUS: '++';
+
+PLUS_EQUALS: '+=';
+
 MINUS   : '-';
     
+MINUS_MINUS   : '--';
+
+MINUS_EQUALS : '-=';
+
 MULTIPLY: '*';
     
 DIVIDE  : '/'; 

@@ -2,7 +2,7 @@ using System;
 
 namespace MyLanguageImpl.Runtime
 {
-    public class MyAssignmentNode : MyStatementNode
+    public class MyAssignmentNode : MyStatementListNode
     {
         public MyVariableNode VariableNode { get; set; }
         public MyAbstractNode ValueNode { get; set; }
@@ -36,7 +36,7 @@ namespace MyLanguageImpl.Runtime
             VariableNode.List(context);
             context.ListLog.Append(" := ");
             ValueNode.List(context);
-            context.ListLog.Append(";");
+            //context.ListLog.Append(";");
         }
     }
 }

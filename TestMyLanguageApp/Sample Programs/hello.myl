@@ -1,5 +1,12 @@
 declare program: hello
 {
+
+    declare function: incr( p1 )
+    {
+        print "p1: " + p1;
+        return p1++;
+    }
+
     {
         h := "HELLO";
         w := "WORLD!";
@@ -7,10 +14,28 @@ declare program: hello
         print "hello";
         print ! "world";
 
-        print;
-
         print h + " " + w;
         print ! h + " " + w;
+
+        a := 0;
+        print "a: " + a;
+
+        a++;
+        print "a: " + a;
+
+        a += 10;
+        print "a: " + a;
+
+        b := a += 100; // b should be 11
+
+        print "b (should be 11)" + b;
+        print "b++ (should be 11)" + b++;
+        print "b (should be 12)" + b;
+        print "++b (should be 13)" + ++b;
+        print "b (should be 13)" + b;
+
+        print "a: " + a;
+        print "b: " + b;
     }
 }
 

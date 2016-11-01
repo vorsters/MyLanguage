@@ -45,6 +45,7 @@
     <Compile Include="Runtime\ListLog.cs" />
     <Compile Include="Runtime\MyAbstractNode.cs" />
     <Compile Include="Runtime\MyAddNode.cs" />
+    <Compile Include="Runtime\MyVarIncrementNode.cs" />
     <Compile Include="Runtime\MyAssignmentNode.cs" />
     <Compile Include="Runtime\MyBinaryOpNode.cs" />
     <Compile Include="Runtime\MyContext.cs" />

@@ -96,6 +96,11 @@ namespace MyLanguageImpl_ANTLR4.Impl
                 return VisitPrintstatement(stmt.printstatement());
             }
 
+            if (stmt.varinc() != null)
+            {
+                return Visit(stmt.varinc());
+            }
+
             return s;
         }
 
@@ -388,8 +393,8 @@ namespace MyLanguageImpl_ANTLR4.Impl
         public override MyAbstractNode VisitVarcall([NotNull] MyLangV4Parser.VarcallContext varcall)
         {
             DebugLine("VisitVarcall: {0}", varcall.GetText());
-            MyVariableNode varNode = new MyVariableNode(varcall.GetText());
-            return varNode;
+            MyVariableNode myVar = new MyVariableNode(varcall.GetText());
+            return myVar;
         }
 
 
@@ -409,6 +414,81 @@ namespace MyLanguageImpl_ANTLR4.Impl
         {
             DebugLine("VisitExpression: {0}", context.GetText());
             return base.VisitExpression(context);
+        }
+
+        public override MyAbstractNode VisitVarinc([NotNull] MyLangV4Parser.VarincContext context)
+        {
+            DebugLine("VisitVarinc: {0}", context.GetText());
+            return base.VisitVarinc(context);
+        }
+
+        int _t_count = 0;
+
+
+
+        /*  perhaps we can get the parser to rewrite i++, i--, i+=val, i-=val as this:
+         {
+                _t_i := i;
+                i := i [+|-] [1|val];
+                _t_i := t_i;
+         }
+         */
+
+
+        public override MyAbstractNode VisitVarPlusPlus([NotNull] MyLangV4Parser.VarPlusPlusContext context)
+        {
+            DebugLine("VisitVarPlusPlus: {0}", context.GetText());
+
+            string varName = context.IDENTIFIER().GetText();
+            MyVarIncrementNode varIncrNode = new MyVarIncrementNode(varName, IncrOp.VarPlusPlus);
+            return varIncrNode;
+        }
+
+        public override MyAbstractNode VisitVarMinusMinus([NotNull] MyLangV4Parser.VarMinusMinusContext context)
+        {
+            DebugLine("VisitVarMinusMinus: {0}", context.GetText());
+
+            string varName = context.IDENTIFIER().GetText();
+            MyVarIncrementNode varIncrNode = new MyVarIncrementNode(varName, IncrOp.VarMinusMinus);
+            return varIncrNode;
+        }
+
+        public override MyAbstractNode VisitVarPlusEquals([NotNull] MyLangV4Parser.VarPlusEqualsContext context)
+        {
+            DebugLine("VisitVarPlusEquals: {0}", context.GetText());
+
+            string varName = context.IDENTIFIER().GetText();
+            MyAbstractNode exprNode = Visit(context.expression());
+            MyVarIncrementNode varIncrNode = new MyVarIncrementNode(varName, IncrOp.VarPlusEquals, exprNode);
+            return varIncrNode;
+        }
+
+        public override MyAbstractNode VisitVarMinusEquals([NotNull] MyLangV4Parser.VarMinusEqualsContext context)
+        {
+            DebugLine("VisitVarMinusEquals: {0}", context.GetText());
+
+            string varName = context.IDENTIFIER().GetText();
+            MyAbstractNode exprNode = Visit(context.expression());
+            MyVarIncrementNode varIncrNode = new MyVarIncrementNode(varName, IncrOp.VarMinusEquals, exprNode);
+            return varIncrNode;
+        }
+
+        public override MyAbstractNode VisitPlusPlusVar([NotNull] MyLangV4Parser.PlusPlusVarContext context)
+        {
+            DebugLine("VisitPlusPlusVar: {0}", context.GetText());
+
+            string varName = context.IDENTIFIER().GetText();
+            MyVarIncrementNode varIncrNode = new MyVarIncrementNode(varName, IncrOp.PlusPlusVar);
+            return varIncrNode;
+        }
+
+        public override MyAbstractNode VisitMinusMinusVar([NotNull] MyLangV4Parser.MinusMinusVarContext context)
+        {
+            DebugLine("VisitMinusMinusVar: {0}", context.GetText());
+
+            string varName = context.IDENTIFIER().GetText();
+            MyVarIncrementNode varIncrNode = new MyVarIncrementNode(varName, IncrOp.MinusMinusVar);
+            return varIncrNode;
         }
     }
 }

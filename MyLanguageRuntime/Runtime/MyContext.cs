@@ -53,6 +53,14 @@ namespace MyLanguageImpl.Runtime
             variables[name] = value;
         }
 
+        public void DestoryVariable(string name)
+        {
+            if (ContainsVariable(name))
+            {
+                variables.Remove(name);
+            }
+        }
+
         public IConvertible GetVariable(string name)
         {
             return variables[name];

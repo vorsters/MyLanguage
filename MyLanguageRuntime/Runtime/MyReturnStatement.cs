@@ -15,7 +15,7 @@ namespace MyLanguageImpl.Runtime
         {
             context.ListLog.Append("return ");
             ReturnExpression.List(context);
-            context.ListLog.Append(";");
+            //context.ListLog.Append(";");
         }
 
         public override object DoStatement(MyContext context)

@@ -52,6 +52,14 @@ namespace MyLanguageImpl.Runtime
             foreach (var statementNode in statements)
             {
                 statementNode.List(context);
+
+                if (statementNode is MyAssignmentNode || 
+                    statementNode is MyReturnStatement || 
+                    statementNode is MyVarIncrementNode)
+                {
+                    context.ListLog.Append(";");
+                }
+
                 context.ListLog.NewLine();
             }
             context.ListLog.StepUp();
