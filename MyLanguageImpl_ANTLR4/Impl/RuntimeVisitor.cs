@@ -318,6 +318,21 @@ namespace MyLanguageImpl_ANTLR4.Impl
             return multiplyNode;
         }
 
+        public override MyAbstractNode VisitExp([NotNull] MyLangV4Parser.ExpContext context)
+        {
+            DebugLine("VisitExp: {0}, left={1}, right={2}", context.GetText(), context.left.GetText(), context.right.GetText());
+
+            Debug("VisitExp left:");
+            MyAbstractNode leftExprNode = Visit(context.left);
+
+            Debug("VisitExp right:");
+
+            MyAbstractNode rightExprNode = Visit(context.right);
+
+            MyExponentNode exponentNode = new MyExponentNode(leftExprNode, rightExprNode);
+            return exponentNode;
+        }
+
         public override MyAbstractNode VisitMod([NotNull] MyLangV4Parser.ModContext Mod)
         {
             DebugLine("VisitMod: {0}, left={1}, right={2}", Mod.GetText(), Mod.left.GetText(), Mod.right.GetText());

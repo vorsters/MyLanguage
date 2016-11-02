@@ -111,6 +111,10 @@ declare program: prog2_myl
         xx_m4 := xx % 4;
         xx_m5 := xx % 5;
 
+        exp_2_4 := 2 ^ 4;
+        exp_3_6 := 3 ^ 6;
+        emulexp := 4 * 3 ^ 2; // should be 36, not 144. let's see!
+
 
     }
 }

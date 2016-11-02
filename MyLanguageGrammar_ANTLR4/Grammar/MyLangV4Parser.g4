@@ -85,6 +85,8 @@ abs_expression
 expression
     : parenexpression #parenexpr
     | STRING #string
+    | <assoc=right> left=expression CARET right=expression #exp
+//    | left=expression CARET <assoc=right> right=expression #exp
     | left=expression MULTIPLY right=expression #multiply
     | left=expression DIVIDE right=expression #divide
     | left=expression MOD right=expression #mod

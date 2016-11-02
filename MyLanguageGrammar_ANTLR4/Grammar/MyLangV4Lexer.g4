@@ -6,6 +6,8 @@ ASSIGN  : ':=';
     
 PLUS    : '+';
 
+CARET : '^';
+
 LQ : '`';
 
 PLUS_PLUS: '++';
