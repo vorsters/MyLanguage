@@ -1,0 +1,56 @@
+declare program: hello
+{
+
+    declare function: incr1( p1 )
+    {
+        return p1++;
+    }
+
+    declare function: incr2( p1 )
+    {
+        return ++p1;
+    }
+
+    {
+        h := "HELLO";
+        w := "WORLD!";
+
+        print "hello";
+        print ! "world";
+
+        print h + " " + w;
+        print ! h + " " + w;
+
+        a := 0;
+        print "a: " + a;
+
+        a++;
+        print "a: " + a;
+
+        a += 10;
+        print "a: " + a;
+
+        b := a += 100; // b should be 11
+
+        print "b (should be 11)" + b;
+        print "b++ (should be 11)" + b++;
+        print "b (should be 12)" + b;
+        print "++b (should be 13)" + ++b;
+        print "b (should be 13)" + b;
+
+        print "a: " + a;
+        print "b: " + b;
+
+        print call incr1(100);
+        print call incr2(100);
+
+        a := 10;
+        b := +-+-+-++a;
+
+        print a;
+        print b;
+
+    }
+}
+
+

@@ -379,6 +379,15 @@ namespace MyLanguageImpl_ANTLR4.Impl
         }
 
 
+        public override MyAbstractNode VisitStringucase([NotNull] MyLangV4Parser.StringucaseContext context)
+        {
+            DebugLine("VisitStringucase: {0}", context.GetText());
+            MyAbstractNode exprNode = Visit(context.ucase());
+            MyUCaseNode ucaseNode = new MyUCaseNode(exprNode);
+            return ucaseNode;
+        }
+
+
         public override MyAbstractNode VisitFloat([NotNull] MyLangV4Parser.FloatContext number)
         {
             DebugLine("VisitFloat: {0}", number.GetText());

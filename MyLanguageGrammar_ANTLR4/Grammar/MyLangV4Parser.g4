@@ -82,9 +82,15 @@ abs_expression
     : LQ expression
     ;
 
+ucase
+    : CARET expression
+    ;
+
+
 expression
     : parenexpression #parenexpr
     | STRING #string
+    | ucase #stringucase
     | <assoc=right> left=expression CARET right=expression #exp
 //    | left=expression CARET <assoc=right> right=expression #exp
     | left=expression MULTIPLY right=expression #multiply
