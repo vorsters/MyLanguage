@@ -78,11 +78,16 @@ posateexpression
     : PLUS expression
     ;
 
+abs_expression
+    : LQ expression
+    ;
+
 expression
     : parenexpression #parenexpr
     | STRING #string
     | left=expression MULTIPLY right=expression #multiply
     | left=expression DIVIDE right=expression #divide
+    | left=expression MOD right=expression #mod
     | left=expression PLUS right=expression #plus
     | left=expression MINUS right=expression #minus
     | left=expression AND right=expression #and
@@ -96,6 +101,7 @@ expression
     | FLOAT #float
     | negateexpression #negate
     | posateexpression #posate
+    | abs_expression #abs
     | varinc #varincexpr
     | incvar #incvarexpr
     | IDENTIFIER #varcall

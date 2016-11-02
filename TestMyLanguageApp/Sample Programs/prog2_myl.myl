@@ -101,5 +101,16 @@ declare program: prog2_myl
         uu := call func7(120 );
         vv := 1*2*3*4*5*6*7/8*9;
         ww := 1+2+3+4;
+
+        xx := -123;
+        xx--;
+        xx:= `xx;
+
+        xx_m2 := xx % 2;
+        xx_m3 := xx % 3;
+        xx_m4 := xx % 4;
+        xx_m5 := xx % 5;
+
+
     }
 }

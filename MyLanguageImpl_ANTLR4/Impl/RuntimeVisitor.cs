@@ -318,12 +318,34 @@ namespace MyLanguageImpl_ANTLR4.Impl
             return multiplyNode;
         }
 
+        public override MyAbstractNode VisitMod([NotNull] MyLangV4Parser.ModContext Mod)
+        {
+            DebugLine("VisitMod: {0}, left={1}, right={2}", Mod.GetText(), Mod.left.GetText(), Mod.right.GetText());
+
+            Debug("VisitMod left:");
+            MyAbstractNode leftExprNode = Visit(Mod.left);
+
+            Debug("VisitMod right:");
+            MyAbstractNode rightExprNode = Visit(Mod.right);
+
+            MyModNode ModNode = new MyModNode(leftExprNode, rightExprNode);
+            return ModNode;
+        }
+
         public override MyAbstractNode VisitNegate([NotNull] MyLangV4Parser.NegateContext negate)
         {
             DebugLine("VisitNegate: {0}", negate.GetText());
             MyAbstractNode opNode = Visit(negate.negateexpression().expression());
             MyNegateNode negateNode = new MyNegateNode(opNode);
             return negateNode;
+        }
+
+        public override MyAbstractNode VisitAbs([NotNull] MyLangV4Parser.AbsContext context)
+        {
+            DebugLine("VisitAbs: {0}", context.GetText());
+            MyAbstractNode opNode = Visit(context.abs_expression());
+            MyAbsNode absNode = new MyAbsNode(opNode);
+            return absNode;
         }
 
         public override MyAbstractNode VisitInt([NotNull] MyLangV4Parser.IntContext number)
@@ -494,5 +516,7 @@ namespace MyLanguageImpl_ANTLR4.Impl
             MyVarIncrementNode varIncrNode = new MyVarIncrementNode(varName, IncrOp.MinusMinusVar);
             return varIncrNode;
         }
+
+        
     }
 }
