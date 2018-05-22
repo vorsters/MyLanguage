@@ -14,3 +14,5 @@ MyLanguageGrammar_ANTLR4/Grammar/*.tokens
 MyLanguageImpl_ANTLR4/bin/
 MyLanguageRuntime/bin/
 TestMyLanguage4App/bin/*
+/.vs
+/TestDLR/bin/Debug/

@@ -4,16 +4,18 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{11668256-430D-40F6-850C-1A8EED9EE5EB}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{8A1F3E61-05AB-4A27-8730-77C11E72A9AC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MyLanguageImpl_ANTLR4</RootNamespace>
-    <AssemblyName>MyLanguageImpl_ANTLR4</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>TestDLR</RootNamespace>
+    <AssemblyName>TestDLR</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +25,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -45,39 +48,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\MyLanguageGrammar_ANTLR4\obj\Debug\MyLangV4Lexer.cs">
-      <Link>Grammar\MyLangV4Lexer.cs</Link>
-    </Compile>
-    <Compile Include="..\MyLanguageGrammar_ANTLR4\obj\Debug\MyLangV4Parser.cs">
-      <Link>Grammar\MyLangV4Parser.cs</Link>
-    </Compile>
-    <Compile Include="..\MyLanguageGrammar_ANTLR4\obj\Debug\MyLangV4ParserBaseListener.cs">
-      <Link>Grammar\MyLangV4ParserBaseListener.cs</Link>
-    </Compile>
-    <Compile Include="..\MyLanguageGrammar_ANTLR4\obj\Debug\MyLangV4ParserBaseVisitor.cs">
-      <Link>Grammar\MyLangV4ParserBaseVisitor.cs</Link>
-    </Compile>
-    <Compile Include="..\MyLanguageGrammar_ANTLR4\obj\Debug\MyLangV4ParserListener.cs">
-      <Link>Grammar\MyLangV4ParserListener.cs</Link>
-    </Compile>
-    <Compile Include="..\MyLanguageGrammar_ANTLR4\obj\Debug\MyLangV4ParserVisitor.cs">
-      <Link>Grammar\MyLangV4ParserVisitor.cs</Link>
-    </Compile>
-    <Compile Include="Impl\RuntimeListener.cs" />
-    <Compile Include="Impl\RuntimeVisitorDLR.cs" />
-    <Compile Include="Impl\RuntimeVisitor.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MyLanguageRuntime\MyLanguageRuntime.csproj">
-      <Project>{183f28ad-bbb3-4f10-97ea-13a1aaadfda2}</Project>
-      <Name>MyLanguageRuntime</Name>
+    <ProjectReference Include="..\MyLanguageImpl_ANTLR4\MyLanguageImpl_ANTLR4.csproj">
+      <Project>{11668256-430D-40F6-850C-1A8EED9EE5EB}</Project>
+      <Name>MyLanguageImpl_ANTLR4</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

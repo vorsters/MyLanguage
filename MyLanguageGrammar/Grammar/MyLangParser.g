@@ -23,8 +23,8 @@ tokens {
 @namespace { MyLanguageImpl.Grammar } 
 
 identifier 
-	:	IDENTIFIER^;
-	
+    : IDENTIFIER^;
+
 public runprogram
     : WS? RUN WS PROGRAM WS IDENTIFIER WS? (ENDP | EOF) -> ^(RUNPROG IDENTIFIER);
 
@@ -96,8 +96,8 @@ unaryexpr
     ;
          
 negation
-	:	MINUS -> NEGATE
-	;         
+    :MINUS -> NEGATE
+    ;         
          
 multexpr 
     : unaryexpr ((MULTIPLY|DIVIDE)^ unaryexpr)*
